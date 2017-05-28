@@ -1,0 +1,1 @@
+In this folder, you can add images for the "Our Team" block.

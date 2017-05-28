@@ -1,0 +1,1 @@
+In this folder, you can add images to the block "Customer Reviews": in the folder "avatars" - photos of real people who have left reviews; in the folder "link" - the image-link the social network, which left a review or the services are rendered
