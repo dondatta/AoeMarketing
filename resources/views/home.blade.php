@@ -5,39 +5,20 @@
     <div class="container">
         <!-- Application Dashboard -->
         <div class="row">
-            <div class="col-md-8 col-md-offset-2">
+            <div class="col-md-4"><div class="panel panel-default">
+                    <div class="panel-heading"><h2 class="text-center text-uppercase">{{ $items[0]['user']['full_name'] }}</h2></div>
+                    <div class="panel-body"><img src="{{ $items[0]['user']['profile_picture'] }}" class="center-block img-thumbnail img-responsive"></div>
+                </div></div>
+            <div class="col-md-8">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Dashboard</div>
+                    <div class="panel-heading">AOE Engagement Board</div>
 
                     <div class="panel-body">
-                        Your application's dashboard.
+
                         <div class="container">
 
-                            <h2>Laravel 5 Instagram API tutorial with example</h2><br/>
+                            <br/>
 
-
-
-                            <div class="container">
-                                <h2>Hover Rows</h2>
-                                <p>The .table-hover class enables a hover state on table rows:</p>
-                                <table class="table table-hover">
-                                    <thead>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th></th>
-                                        <th>Profile</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td>{{ $items[0]['user']['full_name'] }}</td>
-                                        <td>Doe</td>
-                                        <td><img src="{{ $items[0]['user']['profile_picture'] }}"></td>
-                                    </tr>
-
-                                    </tbody>
-                                </table>
-                            </div>
                             <div class="panel panel-primary">
 
                                 <div class="panel-heading">Instagram Feed</div>
@@ -50,7 +31,7 @@
 
                                         <th>No</th>
 
-                                        <th width="200px;">Id</th>
+                                        <th>Id</th>
 
                                         <th>Code</th>
 
