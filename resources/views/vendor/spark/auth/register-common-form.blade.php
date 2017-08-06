@@ -84,6 +84,18 @@
             </span>
         </div>
     </div>
+        <!-- Instagram -->
+        <div class="form-group" :class="{'has-error': registerForm.errors.has('instagram')}">
+            <label class="col-md-4 control-label">Instagram</label>
+
+            <div class="col-md-6">
+                <input type="text" class="form-control" name="instagram" v-model="registerForm.instagram" autofocus>
+
+                <span class="help-block" v-show="registerForm.errors.has('instagram')">
+                @{{ registerForm.errors.get('name') }}
+            </span>
+            </div>
+        </div>
 
     <!-- Terms And Conditions -->
     <div v-if=" ! selectedPlan || selectedPlan.price == 0">
