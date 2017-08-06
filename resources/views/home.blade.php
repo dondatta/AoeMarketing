@@ -16,34 +16,6 @@
                             <h2>Laravel 5 Instagram API tutorial with example</h2><br/>
 
 
-                            <form method="GET" role="form">
-
-
-                                <div class="row">
-
-                                    <div class="col-md-6">
-
-                                        <div class="form-group">
-
-                                            <input type="text" id="username" name="username" class="form-control" placeholder="Enter Instagram Username" value="{{ old('username') }}">
-
-                                        </div>
-
-                                    </div>
-
-                                    <div class="col-md-6">
-
-                                        <div class="form-group">
-
-                                            <button class="btn btn-success">Search</button>
-
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
-                            </form>
 
                             <div class="container">
                                 <h2>Hover Rows</h2>
