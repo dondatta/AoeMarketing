@@ -62,5 +62,32 @@ class SparkServiceProvider extends ServiceProvider
             ->features([
                 'First', 'Second', 'Third'
             ]);
+        Spark::validateUsersWith(function () {
+            return [
+                'name' => 'required|max:255',
+                'instagram' => 'required|max:255',
+                'email' => 'required|email|max:255|unique:users',
+                'password' => 'required|confirmed|min:6',
+                'vat_id' => 'max:50|vat_id',
+                'terms' => 'required|accepted',
+            ];
+        });
+
+        Spark::createUsersWith(function ($request) {
+            $user = Spark::user();
+
+            $data = $request->all();
+
+            $user->forceFill([
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'instagram' => $data['instagram'],
+                'password' => bcrypt($data['password']),
+                'last_read_announcements_at' => Carbon::now(),
+                'trial_ends_at' => Carbon::now()->addDays(Spark::trialDays()),
+            ])->save();
+            return $user;
+        });
+
     }
 }

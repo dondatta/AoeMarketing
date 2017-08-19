@@ -18,9 +18,6 @@ require('spark-bootstrap');
 
 require('./components/bootstrap');
 
-Spark.forms.register = {
-    instagram: ''
-};
 
 var app = new Vue({
     mixins: [require('spark')]

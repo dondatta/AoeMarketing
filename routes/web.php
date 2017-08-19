@@ -16,3 +16,5 @@ Route::get('/', 'WelcomeController@show');
 Route::get('/home', 'HomeController@show');
 
 Route::get('instagram', 'InstagramController@index');
+
+Route::post('/social','UserSocialController@store');

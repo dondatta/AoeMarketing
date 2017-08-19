@@ -28,8 +28,15 @@ class HomeController extends Controller
      */
     public function show()
     {
-	    $items = [];
-	    $social = DB::table('users')->where('id', Auth::id())->value('instagram');
+
+
+	    $social = DB::table('user_socials')->where('userid', Auth::id())->value('instagram');
+
+        if($social === NULL) {
+
+           return view('userSocial.create');
+        }
+        else
 
 	    $client = new \GuzzleHttp\Client;
 
@@ -40,9 +47,7 @@ class HomeController extends Controller
 	    $items = json_decode((string) $response->getBody(), true)['items'];
 
 
-
-
-	    return view('home',compact('items'));
+        return view('home',compact('items'));
     }
 
 

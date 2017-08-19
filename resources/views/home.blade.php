@@ -1,8 +1,10 @@
 @extends('spark::layouts.app')
 
 @section('content')
+
 <home :user="user" inline-template>
     <div class="container">
+
         <!-- Application Dashboard -->
         <div class="row">
             <div class="col-md-4"><div class="panel panel-default">
@@ -98,5 +100,6 @@
             </div>
         </div>
     </div>
+
 </home>
 @endsection
