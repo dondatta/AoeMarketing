@@ -2,49 +2,63 @@
 
 @section('content')
 
-<home :user="user" inline-template>
-    <div class="container">
+    <home :user="user" inline-template>
+        <div class="container">
 
-        <!-- Application Dashboard -->
-        <div class="row">
-            <div class="col-md-4"><div class="panel panel-default">
-                    <div class="panel-heading"><h2 class="text-center text-uppercase">{{ $items[0]['user']['full_name'] }}</h2></div>
-                    <div class="panel-body"><img src="{{ $items[0]['user']['profile_picture'] }}" class="center-block img-thumbnail img-responsive"></div>
-                </div></div>
-            <div class="col-md-8">
-                <div class="panel panel-default">
-                    <div class="panel-heading">AOE Engagement Board</div>
+            <!-- Application Dashboard -->
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading"><h2
+                                    class="text-center text-uppercase">{{ $items[0]['user']['full_name'] }}</h2></div>
+                        <div class="panel-body"><a href="http://www.instagram.com/{{ $items[0]['user']['username'] }}"><img src="{{ $items[0]['user']['profile_picture'] }}"
+                                                    class="center-block img-thumbnail img-responsive"></a>
+                            <div class="bg-primary text-center"><h2 class="glyphicon glyphicon-comment"> Comments</h2></div>
+                            @if(!empty($items))
 
-                    <div class="panel-body">
+                                @foreach($items as $key => $item)
+                                    <!-- Left-aligned -->
+                                        <div class="media">
+                                            <div class="media-left">
+                                                <img src="{{ $item['comments']['data'][0]['from']['profile_picture'] }}" class="media-object" style="width:60px">
+                                            </div>
+                                            <div class="media-body">
+                                                <h4 class="media-heading">{{ $item['comments']['data'][0]['from']['full_name'] }}</h4>
+                                                <p>{{ $item['comments']['data'][0]['text'] }}...</p>
+                                            </div>
+                                        </div>
 
-                        <div class="container">
+                                @endforeach
 
-                            <br/>
+                            @else
 
-                            <div class="panel panel-primary">
+                                <ul>
 
-                                <div class="panel-heading">Instagram Feed</div>
+                                    <li>There are no data.</li>
 
-                                <div class="panel-body">
+                                </ul>
 
-                                    <table class="table table-bordered">
+                            @endif
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="panel panel-default">
+
+
+                             <div class="panel panel-primary">
+
+                                <div class="panel-heading table-responsive">Instagram Feed</div>
+
+                                <div class="panel-body ">
+
+                                    <table class="table table-hover table-scriped table-bordered">
 
                                         <thead>
-
-                                        <th>No</th>
-
-                                        <th>Id</th>
-
-                                        <th>Code</th>
-
                                         <th>Image</th>
-
-                                        <th>Location</th>
-
                                         <th>Total Likes</th>
-
                                         <th>Total Comments</th>
-
                                         </thead>
 
                                         <tbody>
@@ -52,22 +66,13 @@
                                         @if(!empty($items))
 
                                             @foreach($items as $key => $item)
-
                                                 <tr>
+                                                    <td><img src="{{ $item['images']['standard_resolution']['url'] }}"
+                                                             style="width:100px;"></td>
 
-                                                    <td>{{ ++$key }}</td>
+                                                    <td class="bg-info"><span class="badge text-center">{{ $item['likes']['count'] }}</span></td>
 
-                                                    <td>{{ $item['id'] }}</td>
-
-                                                    <td>{{ $item['code'] }}</td>
-
-                                                    <td><img src="{{ $item['images']['standard_resolution']['url'] }}" style="width:100px;"></td>
-
-                                                    <td>{{ isset($item['location']['name']) ? $item['location']['name'] : '' }}</td>
-
-                                                    <td>{{ $item['likes']['count'] }}</td>
-
-                                                    <td>{{ $item['comments']['count'] }}</td>
+                                                    <td class="bg-info"><span class="badge text-center">{{ $item['comments']['count'] }}</span></td>
 
                                                 </tr>
 
@@ -94,12 +99,9 @@
 
                         </div>
 
-
-                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-</home>
+    </home>
 @endsection

@@ -11,10 +11,10 @@
 |
 */
 
-Route::get('/', 'WelcomeController@show');
+Route::get('/', 'WelcomeController@show')->middleware('guest');
 
-Route::get('/home', 'HomeController@show');
+Route::get('/home', 'HomeController@show')->middleware('auth');
 
-Route::get('instagram', 'InstagramController@index');
+Route::get('instagram', 'InstagramController@index')->middleware('auth');
 
-Route::post('/social','UserSocialController@store');
+Route::post('/social','UserSocialController@store')->middleware('auth');
