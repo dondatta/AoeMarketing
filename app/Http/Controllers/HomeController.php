@@ -40,14 +40,49 @@ class HomeController extends Controller
 
 	    $client = new \GuzzleHttp\Client;
 
-	    $url = sprintf('https://www.instagram.com/%s/media', $social);
+	    $url = sprintf('https://www.instagram.com/%s/?__a=1', $social);
 
-	    $response = $client->get($url);
+	   // $response = $client->get($url);
 
-	    $items = json_decode((string) $response->getBody(), true)['items'];
+        //$items = array($response->getBody()->getContents());
+	    //$items = json_decode((string) $response->getBody()->getContents(), true)['items'];
+
+      //  var_dump($items);
+      //  die();
 
 
-        return view('home',compact('items'));
+        /////// CONFIG ///////
+        $username = 'infatuationapparel';
+        $password = '1219Whittier';
+        $debug = false;
+        $truncatedDebug = false;
+        //////////////////////
+           
+        $ig = new \InstagramAPI\Instagram($debug, $truncatedDebug);
+
+
+        try {
+            $ig->login($username, $password);
+        } catch (\Exception $e) {
+            echo 'Something went wrong: '.$e->getMessage()."\n";
+            exit(0);
+        }
+
+        $userId = $ig->people->getUserIdForName($social);
+
+        $items = $ig->people->getInfoById($userId);
+
+
+
+
+
+
+
+        //echo '<pre>' . var_export($items, true) . '</pre>';
+
+        //echo $items->user->profile_pic_url;
+
+return view('home',compact('items'));
     }
 
 
